@@ -4,5 +4,5 @@ import org.springframework.stereotype.Component;
 
 @Component
 public interface GenProParser {
-    GenProParserMapValues parse(String[] args);
+    GenProParserValues parse(String[] args);
 }

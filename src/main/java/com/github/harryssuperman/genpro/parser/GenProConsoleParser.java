@@ -6,7 +6,13 @@ import org.springframework.stereotype.Component;
 public class GenProConsoleParser implements GenProParser {
 
     @Override
-    public GenProParserMapValues parse(String[] args) {
-        return new GenProParserMapValues();
+    public GenProParserValues parse(String[] args) {
+        final GenProParserValues genProParserMapValues = new GenProParserValues();
+        if (parseMainOperation(genProParserMapValues, args)) {
+            if (parseOperationObjects(genProParserMapValues, args)) {
+                parseRestValues(genProParserMapValues, args);
+            }
+        }
+        return new GenProParserValues();
     }
 }

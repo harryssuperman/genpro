@@ -1,8 +1,5 @@
 package com.github.harryssuperman.genpro;
 
-import java.util.Arrays;
-import java.util.stream.Collectors;
-
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.boot.SpringApplication;
@@ -17,16 +14,16 @@ public class GenproApplication {
     private static final Logger log = LogManager.getLogger(GenproApplication.class);
 
     public static void main(String[] args) {
-        if (isACorrectGenProCall(SpringApplication.run(GenproApplication.class, args), args)) {
+        if (isGenProCall(SpringApplication.run(GenproApplication.class, args), args)) {
             log.info("Ok.");
         } else {
-            log.error("Not Ok. Wrong GenPro Call with: " + Arrays.stream(args).collect(Collectors.joining(" ")));
+            log.error("Not Ok. Wrong GenPro Call with: {}", String.join(" ", args));
         }
     }
 
-    private static boolean isACorrectGenProCall(ConfigurableApplicationContext applicationContext, String[] args) {
-        log.info("Genpro App executing: " + Arrays.stream(args).collect(Collectors.joining(" ")));
-        return (applicationContext.getBean(GenProController.class).isGenProCallCorrect(args)) == true;
+    private static boolean isGenProCall(ConfigurableApplicationContext applicationContext, String[] args) {
+        log.info("Genpro App executing: {}", String.join(" ", args));
+        return (applicationContext.getBean(GenProController.class).isGenProCallExecuted(args));
     }
 }
 

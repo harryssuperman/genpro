@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 import com.github.harryssuperman.genpro.entities.GenProConfig;
 
 @Repository
-public class GenProConfigDao {
+public class GenProDao implements IGenProDao {
 
     @PersistenceContext
     private EntityManager entityManager;
