@@ -21,6 +21,6 @@ public class GenProController {
 
     public boolean isGenProCallExecuted(String[] args) {
         final GenProParserValues genProParserValues = genProParser.parse(args);
-        return genProParserValues.isParsed() ? genProService.executedGenProCall(genProParserValues) : false;
+        return genProParserValues.isParsed() ? genProService.executeGenProCall(genProParserValues) : false;
     }
 }

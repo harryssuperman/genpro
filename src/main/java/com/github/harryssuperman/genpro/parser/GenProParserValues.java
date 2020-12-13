@@ -1,23 +1,22 @@
 package com.github.harryssuperman.genpro.parser;
 
 import com.github.harryssuperman.genpro.enums.GenProMainOperation;
+import com.github.harryssuperman.genpro.enums.GenProOperationObject;
 
 public class GenProParserValues {
 
     private boolean parsed;
     private String[] parserArgs;
     private GenProMainOperation mainOperation;
+    private GenProOperationObject operationObject;
+    private GenProParserVariableValues genProParserVariableValues;
 
-    public GenProParserValues() {
+    public GenProParserValues(String... parserArgs) {
         this.parsed = false;
-    }
-
-    public GenProParserValues(boolean parserResult, String[] parserArgs, GenProMainOperation mainOperation) {
-        this.parsed = parserResult;
         this.parserArgs = parserArgs;
-        this.mainOperation = mainOperation;
+        this.mainOperation = GenProMainOperation.LIST;
+        this.operationObject = GenProOperationObject.PROPERTY;
     }
-
 
     public boolean isParsed() {
         return parsed;
@@ -41,5 +40,21 @@ public class GenProParserValues {
 
     public void setMainOperation(GenProMainOperation mainOperation) {
         this.mainOperation = mainOperation;
+    }
+
+    public GenProOperationObject getOperationObject() {
+        return operationObject;
+    }
+
+    public void setOperationObject(GenProOperationObject operationObject) {
+        this.operationObject = operationObject;
+    }
+
+    public GenProParserVariableValues getGenProParserVariableValues() {
+        return genProParserVariableValues;
+    }
+
+    public void setGenProParserVariableValues(GenProParserVariableValues genProParserVariableValues) {
+        this.genProParserVariableValues = genProParserVariableValues;
     }
 }
